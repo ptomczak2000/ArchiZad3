@@ -8,11 +8,12 @@
 ; Uwagi          : Plik zawieraj¹cy modu³y do obliczania sredniej tablicy	  ;			
 ;                  oraz zliczaj¹cy ilosc znaku w tablicy                      ;
 ;=============================================================================;
-				.MODEL		SMALL, C++
-				.CODE 
+				.MODEL		SMALL, C
+
 				PUBLIC		tablica
 				PUBLIC		zliczenia
 
+				.CODE
 tablica:		PROC
 				mov  ax, 0
 				
@@ -20,4 +21,8 @@ tablica:		PROC
 zliczenia:		PROC
 
 				ENDP
+				END
+
+				.STACK
+				DB 100h DUP	(?)
 				END
