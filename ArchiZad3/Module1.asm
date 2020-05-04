@@ -12,9 +12,8 @@
 				.CODE 
 				PUBLIC		tablica
 				PUBLIC		zliczenia
-				.DATA
-
 tablica:		PROC
-				mov 
+				mov  ax, 0
+				
 				ENDP
 				END
