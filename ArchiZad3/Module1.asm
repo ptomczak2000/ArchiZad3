@@ -11,7 +11,7 @@
 				.MODEL		SMALL, C
 				.CODE 
 				PUBLIC		tablica
-				;PUBLIC		zliczenia
+				PUBLIC		zliczenia
 tablica		PROC
 Start:
 				push bp	
@@ -36,5 +36,27 @@ Zakonczenie:
 				ret
 
 				
+				ENDP
+zliczenia		PROC
+Start2:
+				push bp	
+				mov bp, sp
+				mov si, [bp+4] ; tablica
+				mov bl, [bp+6]
+				mov ax,0
+Petla2:
+				mov cl,[si]
+				cmp cl,0Ah
+				je Zakonczenie2
+				cmp cl, bl
+				jne Inkrementacja
+				inc ax
+Inkrementacja:
+				inc si
+				jmp Petla2
+Zakonczenie2:
+				mov sp,bp
+				pop bp
+				ret
 				ENDP
 				END

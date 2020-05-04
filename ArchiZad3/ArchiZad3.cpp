@@ -1,7 +1,6 @@
-﻿#include <iostream>
-using namespace std;
-extern "C" float* tablica(float* tab[], int* n);
-extern "C" int* zliczenia(char* tab[], char* znaczek);
+﻿#include <iostream.h>
+extern "C" float tablica(float tab[], int n);
+extern "C" int zliczenia(char tab[], char znaczek);
 int main()
 {
     int wybor;
@@ -15,7 +14,6 @@ int main()
         switch (wybor) {
         case 1: {
             int ilosc;
-            int* ptr = &ilosc;
             float srednia;
             cout << "Podaj podaj ilosc elementow: ";
             cin >> ilosc;
@@ -24,21 +22,22 @@ int main()
                 cout << "Podaj element "<< i+1 << " tablicy: ";
                 cin >> tab[i];
             }
-            //srednia=tablica(tab, ilosc);
-            //cout << "Srednia wynosi: " << srednia << endl;
+            srednia=tablica(tab, ilosc);
+            cout << "Srednia wynosi: " << srednia << endl;
             delete tab;
             break;
             }
         case 2: {
             char znaczek;
-            char tab[256];
+            char* tab=new char[256];
             int ilosc;
             cout << "Podaj tablice znakow: ";
             cin.get();
             cin.getline(tab, 256);
             cout << "Podaj szukany znak: ";
             cin >> znaczek;
-            //ilosc=zliczenia(tab, znaczek);
+            ilosc=zliczenia(tab, znaczek);
+			cout << "Znak wystepuje "<<ilosc<<" razy"<<endl;
             break;
         }
         default: {
