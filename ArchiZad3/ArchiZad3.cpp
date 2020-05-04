@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 using namespace std;
-extern "C" float tablica(int n, int tab[]);
-extern "C" int zliczenia(char tab[], char znaczek);
+extern "C" float* tablica(float* tab[], int* n);
+extern "C" int* zliczenia(char* tab[], char* znaczek);
 int main()
 {
     int wybor;
@@ -15,19 +15,20 @@ int main()
         switch (wybor) {
         case 1: {
             int ilosc;
+            int* ptr = &ilosc;
             float srednia;
             cout << "Podaj podaj ilosc elementow: ";
             cin >> ilosc;
-            int* tab = new int[ilosc];
+            float* tab = new float[ilosc];
             for (int i = 0; i < ilosc; i++) {
-                cout << "Podaj element"<< i+1 << " tablicy: ";
+                cout << "Podaj element "<< i+1 << " tablicy: ";
                 cin >> tab[i];
             }
-            //srednia=tablica(ilosc, tab);
+            //srednia=tablica(tab, ilosc);
             //cout << "Srednia wynosi: " << srednia << endl;
             delete tab;
             break;
-        }
+            }
         case 2: {
             char znaczek;
             char tab[256];
