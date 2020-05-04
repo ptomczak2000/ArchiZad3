@@ -12,11 +12,12 @@
 				.CODE 
 				PUBLIC		tablica
 				;PUBLIC		zliczenia
-tablica:		PROC
+tablica		PROC
 Start:
 				push bp	
 				mov bp, sp
-				mov si, bp+4 ; tablica
+				mov si, [bp+4] ; tablica
+				fldz
 				fld dword ptr [si]
 				add si,4	
 			    mov ax, 1 ; inkrementacja
@@ -26,9 +27,10 @@ Petla1:
 				fadd dword ptr [si]
 				add si,4
 				inc ax
+				jmp Petla1
 
 Zakonczenie:
-				fidiv dword ptr [bp+6]
+				fidiv word ptr [bp+6]
 				mov sp,bp
 				pop bp
 				ret
